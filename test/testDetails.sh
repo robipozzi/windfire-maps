@@ -1,2 +1,2 @@
 # Place Details Test
-curl "http://localhost:3000/api/places/details?placeid=EjlWaWEgZGVsIEdhbGxhcmF0ZSwgVmFsZXJhIEZyYXR0YSwgUHJvdmluY2Ugb2YgTG9kaSwgSXRhbHkiLiosChQKEgnRpF8zs9WGRxF7RqvbiYBNNhIUChIJP46ryrLVhkcRMbyPdAuTGaA"
+curl "http://localhost:3000/api/places/details?placeid=EiVWaWEgVmFsbGUgTnVvdmEsIEdhbGxhcmF0ZSwgVkEsIEl0YWx5Ii4qLAoUChIJW_5sjdiJhkcRwTEXklP4LOsSFAoSCfd3lYjCiYZHERGKzb2w_oYZ"

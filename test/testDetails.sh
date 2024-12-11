@@ -1,0 +1,2 @@
+# Place Details Test
+curl "http://localhost:3000/api/places/details?placeid=EjlWaWEgZGVsIEdhbGxhcmF0ZSwgVmFsZXJhIEZyYXR0YSwgUHJvdmluY2Ugb2YgTG9kaSwgSXRhbHkiLiosChQKEgnRpF8zs9WGRxF7RqvbiYBNNhIUChIJP46ryrLVhkcRMbyPdAuTGaA"

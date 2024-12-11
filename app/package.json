@@ -1,0 +1,19 @@
+{
+  "name": "windfire-maps",
+  "main": "app.js",
+  "description": "Windfire backend services wrapping Google Maps API",
+  "version": "1.0.0",
+  "author": "Roberto Pozzi",
+  "license": "ISC",
+  "private": false,
+  "loggerLevel": "debug",
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.4",
+    "cors": "^2.8.5"
+  }
+}

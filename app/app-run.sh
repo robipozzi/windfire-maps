@@ -1,3 +1,3 @@
 ### Run Node.Js application
 npm install
-npm start
+nohup npm start & >> log.out

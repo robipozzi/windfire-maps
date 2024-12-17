@@ -1,0 +1,23 @@
+--- # Ansible Playbook to automate application removal from Raspberry Pis in a consistent and repeatable way
+# Software installation and configuration
+- hosts: maps_service
+  remote_user: "{{ user }}"
+  become: yes
+  vars:
+    src_dir: "{{ playbook_dir }}"
+    nodejs_src_dir: "{{ lookup('env', 'PWD') }}/app"
+    service_name: windfire-maps
+    mode: u=rwx
+  vars_files:
+    - "{{ src_dir }}/conf/config.yml"
+  tasks:
+    - name: Stop Node.js application service {{ service_name }}
+      shell: pm2 stop {{ service_name }}
+      ignore_errors: yes
+    - name: Delete Node.js application service {{ service_name }}
+      shell: pm2 delete {{ service_name }}
+      ignore_errors: yes
+    - name: Clean Node.js application folder {{ remote_nodejs_dest_dir }}
+      file:
+        path: "{{ remote_nodejs_dest_dir }}"
+        state: absent

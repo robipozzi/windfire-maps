@@ -18,7 +18,7 @@ The application uses **dotenv** module to read the needed environment variables 
 Once the web server has started, the two endpoints described above are available to be called.
 
 ## Deployment
-The project provides procedures, based on Ansible, to deploy the application to different target platform (currently only deployment to Raspberry has been implemented).
+The project provides procedures, based on Ansible, to deploy the application to different target platforms (currently only deployment to Raspberry has been implemented).
 
 The **[deploy.sh](deploy.sh)** script manages the deployment procedures, delegating to specific Ansible playbooks for the different target platform.
 

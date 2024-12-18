@@ -7,8 +7,8 @@
 This project implements backend services that wrap Google Maps APIs.
 
 The application exposes 2 endpoints:
-* **/api/places/autocomplete** which takes a string as an input, such as an address (or part of an address), and implements *Google Maps autocomplete proxy*
-* **/api/places/details** which takes a *place_id* from the Google Maps response and implements *Google Maps place details proxy*
+* **/api/places/autocomplete**, which takes a string as an input, such as an address (or part of an address), and implements *Google Maps autocomplete proxy*
+* **/api/places/details**, which takes a *place_id* from the Google Maps response and implements *Google Maps place details proxy*
 
 ## Service implementation
 The application is implemented using NodeJs technology, in **[app.js](app/app.js)**.

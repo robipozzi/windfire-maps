@@ -20,7 +20,7 @@ Once the web server has started, the two endpoints described above are available
 ## Deployment
 The project provides procedures, based on Ansible, to deploy the application to different target platform (currently only deployment to Raspberry has been implemented).
 
-The **[deploy.sh](deploy.sh) script manages the deployment procedures, delegating to specific Ansible playbooks for the different target platform.
+The **[deploy.sh](deploy.sh)** script manages the deployment procedures, delegating to specific Ansible playbooks for the different target platform.
 
 The **[windfire-maps.yaml](deployment/raspberry/windfire-maps.yaml)** playbook is provided to do the following tasks on all Raspberry Pi boxes labeled as *maps_service* hosts:
 

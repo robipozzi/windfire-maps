@@ -13,7 +13,7 @@ The application exposes 2 endpoints:
 ## Service implementation
 The application is implemented using NodeJs technology, in **[app.js](app/app.js)**.
 
-The application uses **dotenv** module to read the needed enironment variables (i.e.: **GOOGLE_MAPS_API_KEY** and **PORT**) from **[.env](app/.env_PLACEHOLDER)** file, then starts a web server on port **PORT** (by default this is 3000). A convenient script **[app-run.sh](app/app-run.sh)** is provided to launch the server.
+The application uses **dotenv** module to read the needed environment variables (i.e.: **GOOGLE_MAPS_API_KEY** and **PORT**) from **[.env](app/.env_PLACEHOLDER)** file, then starts a web server on port **PORT** (by default this is 3000). A convenient script **[app-run.sh](app/app-run.sh)** is provided to launch the server.
 
 Once the web server has started, the two endpoints described above are available to be called.
 

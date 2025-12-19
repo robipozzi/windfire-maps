@@ -5,7 +5,6 @@ const http = require('http');
 // Skip SSL verification for self-signed certs (development only)
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-const BASE_URL = 'https://localhost:3443';
 const ENDPOINTS = [
   {
     name: 'Autocomplete',

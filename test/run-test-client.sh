@@ -81,8 +81,7 @@ run_test_client() {
     echo
 
     # Run NodeJs tests
-    run_nodejs_autocomplete_test
-    run_nodejs_placedetails_test
+    run_nodejs_test
 }
 
 # ===== CURL TESTS FUNCTIONS =====
@@ -101,18 +100,10 @@ run_curl_placedetails_test() {
 }
 
 # ===== NODJS TESTS FUNCTIONS =====
-run_nodejs_autocomplete_test() {
-    # Autocomplete Test
-    echo -e "${BOLD}${BLU}-----> NodeJs autocomplete test <-----${RESET}"
-    echo -e "${BOLD}${RED}TODO${RESET}"
-    echo
-}
-
-run_nodejs_placedetails_test() {
-    # Place Details Test
-    echo -e "${BOLD}${BLU}-----> NodeJs place details test <-----${RESET}"
-    echo -e "${BOLD}${RED}TODO${RESET}"
-    echo
+run_nodejs_test() {
+    ### Run Node.Js application
+    npm install
+    npm start
 }
 
 # ===== ARGUMENT PARSING FUNCTION =====

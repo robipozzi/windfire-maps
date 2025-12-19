@@ -1,0 +1,16 @@
+{
+  "name": "windfire-maps",
+  "main": "test.js",
+  "description": "Windfire Maps services test client",
+  "version": "1.0.0",
+  "author": "Roberto Pozzi",
+  "license": "ISC",
+  "private": false,
+  "loggerLevel": "debug",
+  "scripts": {
+    "start": "node test"
+  },
+  "dependencies": {
+    
+  }
+}

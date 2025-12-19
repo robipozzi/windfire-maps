@@ -2,3 +2,5 @@ app/.env
 app/node_modules/
 app/log.out
 app/nohup.out
+app/ssl/windfire-maps.key
+app/ssl/windfire-maps.crt

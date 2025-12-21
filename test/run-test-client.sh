@@ -6,10 +6,10 @@ source ../setenv.sh
 
 # ===== DEFAULT VALUES =====
 LOG_LEVEL="INFO"
-HTTPS_ENDPOINT=false
-PROTOCOL="http"
+HTTPS_ENDPOINT=true
+PROTOCOL="https"
 DEFAULT_HOST="localhost"
-DEFAULT_PORT=3000
+DEFAULT_PORT=3443
 
 # ===== MAIN FUNCTION =====
 main() {
@@ -31,11 +31,11 @@ run_test_client() {
     echo -e "${YELLOW}Running tests ...${RESET}"
     echo
 
-    if [ "$HTTPS_ENDPOINT" = true ]; then
+    if [ "$HTTPS_ENDPOINT" = false ]; then
         echo -e "${YELLOW}HTTPS_ENDPOINT is set to ${BOLD}${BLU}$HTTPS_ENDPOINT${RESET}${RESET}"
-        PROTOCOL="https"
+        PROTOCOL="http"
         if [ -z "${PORT}" ]; then
-            PORT=3443
+            PORT=3000
         fi
     fi
 
@@ -110,8 +110,8 @@ run_nodejs_test() {
 parse_args() {
     while [[ $# -gt 0 ]]; do
         case $1 in
-            --https)
-                HTTPS_ENDPOINT=true
+            --http)
+                HTTPS_ENDPOINT=false
                 shift
                 ;;
             --host)
@@ -163,8 +163,8 @@ print_help() {
     echo -e "    ./run-test-client.sh [OPTIONS]"
     echo
     echo -e "${BOLD}OPTIONS:${RESET}"
-    echo -e "    --https                    Enforce call to HTTPS endpoint"
-    echo -e "                               Default: false"
+    echo -e "    --http                     Enforce call to HTTP endpoint"
+    echo -e "                               Default: HTTPS endpoint call enforced"
     echo
     echo -e "    --host HOST                Specify HOST "
     echo -e "                               Default: localhost"
@@ -181,8 +181,8 @@ print_help() {
     echo -e "    # Run with default settings"
     echo -e "    ./run-test-client.sh"
     echo
-    echo -e "    # Run with HTTPS endpoint enabled"
-    echo -e "    ./run-test-client.sh --https"
+    echo -e "    # Run with HTTP endpoint enabled"
+    echo -e "    ./run-test-client.sh --http"
     echo
     echo -e "    # Run tests against default host (i.e.: localhost) on custom port 9000"
     echo -e "    ./run-test-client.sh -p 9000"

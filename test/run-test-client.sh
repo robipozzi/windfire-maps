@@ -10,6 +10,7 @@ HTTPS_ENDPOINT=true
 PROTOCOL="https"
 DEFAULT_HOST="localhost"
 DEFAULT_PORT=3443
+VERIFY_SSL_CERTS=true
 
 # ===== MAIN FUNCTION =====
 main() {
@@ -103,7 +104,7 @@ run_curl_placedetails_test() {
 run_nodejs_test() {
     ### Run Node.Js application
     npm install
-    npm start
+    VERIFY_SSL_CERTS=$VERIFY_SSL_CERTS npm start
 }
 
 # ===== ARGUMENT PARSING FUNCTION =====
@@ -112,6 +113,10 @@ parse_args() {
         case $1 in
             --http)
                 HTTPS_ENDPOINT=false
+                shift
+                ;;
+            --skip-ssl-verification)
+                VERIFY_SSL_CERTS=false
                 shift
                 ;;
             --host)
@@ -142,10 +147,11 @@ parse_args() {
 # ===== CONFIGURATION DISPLAY FUNCTION =====
 display_config() {
     echo -e "${BOLD}${GREEN}Configuration Summary:${RESET}"
-    echo -e "  HTTPS_ENDPOINT:  ${YELLOW}$HTTPS_ENDPOINT${RESET}"
-    echo -e "  HOST:            ${YELLOW}$HOST${RESET}"
-    echo -e "  PORT:            ${YELLOW}$PORT${RESET}"
-    echo -e "  Verbose:         ${YELLOW}$([ "$VERBOSE" = true ] && echo 'Enabled' || echo 'Disabled')${RESET}"
+    echo -e "  HTTPS_ENDPOINT:      ${YELLOW}$HTTPS_ENDPOINT${RESET}"
+    echo -e "  VERIFY_SSL_CERTS:    ${YELLOW}$VERIFY_SSL_CERTS${RESET}"
+    echo -e "  HOST:                ${YELLOW}$HOST${RESET}"
+    echo -e "  PORT:                ${YELLOW}$PORT${RESET}"
+    echo -e "  Verbose:             ${YELLOW}$([ "$VERBOSE" = true ] && echo 'Enabled' || echo 'Disabled')${RESET}"
     echo
 }
 
@@ -165,6 +171,9 @@ print_help() {
     echo -e "${BOLD}OPTIONS:${RESET}"
     echo -e "    --http                     Enforce call to HTTP endpoint"
     echo -e "                               Default: HTTPS endpoint call enforced"
+    echo
+    echo -e "    --skip-ssl-verification    Skip SSL certificate verification"
+    echo -e "                               Default: SSL certificate verification is enforced"
     echo
     echo -e "    --host HOST                Specify HOST "
     echo -e "                               Default: localhost"

@@ -3,7 +3,14 @@ const https = require('https');
 const http = require('http');
 
 // Skip SSL verification for self-signed certs (development only)
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+let VERIFY_SSL_CERTS = process.env.VERIFY_SSL_CERTS === 'true';
+if (VERIFY_SSL_CERTS) {
+  console.log("-> SSL Certificate verification is ENABLED")
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '1';
+} else {
+  console.log("-> SSL Certificate verification is DISABLED")
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+}
 
 const ENDPOINTS = [
   {
@@ -29,8 +36,8 @@ function testEndpoint(endpoint, index) {
     hostname: 'localhost',
     port: 3443,
     path: `${endpoint.path}?${new URLSearchParams(endpoint.params)}`,
-    method: 'GET',
-    rejectUnauthorized: false // Skip self-signed cert verification
+    method: 'GET'
+    //rejectUnauthorized: VERIFY_SSL_CERTS
   };
 
   const protocol = https;

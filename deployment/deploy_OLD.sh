@@ -1,4 +1,10 @@
-source ./setenv.sh
+#!/bin/bash
+
+# ***** Deploy script for Windfire Maps component *****
+
+source ../setenv.sh
+source ../commons.sh
+
 # ##### Variable section - START
 SCRIPT=deploy.sh
 PLATFORM_OPTION=$1
@@ -10,8 +16,10 @@ deployToRaspberry()
 {
 	## Deploy Windfire Maps component to remote Raspberry box
     echo ${cyn}Deploy Windfire Maps component to Raspberry Pi ...${end}
-    export ANSIBLE_CONFIG=$PWD/deployment/raspberry/ansible.cfg
-    ansible-playbook deployment/raspberry/windfire-maps.yaml 
+    eval "$(ssh-agent -s)"
+    ssh-add $HOME/.ssh/ansible_rsa
+    #export ANSIBLE_CONFIG=$PWD/raspberry/ansible.cfg
+    ansible-playbook raspberry/windfire-maps-deploy.yaml 
     echo ${cyn}Done${end}
     echo
 }
@@ -25,24 +33,6 @@ deploy()
     $DEPLOY_FUNCTION
 }
 
-printSelectPlatform()
-{
-	echo ${grn}Select deployment platform : ${end}
-    echo "${grn}1. Raspberry${end}"
-    read PLATFORM_OPTION
-	setDeployFunction
-}
-
-setDeployFunction()
-{
-	case $PLATFORM_OPTION in
-		1)  DEPLOY_FUNCTION="deployToRaspberry"
-			;;
-		*)  echo "${red}No valid option selected${end}"
-			printSelectPlatform
-			;;
-	esac
-}
 # ***** Function section - END
 
 # ##############################################

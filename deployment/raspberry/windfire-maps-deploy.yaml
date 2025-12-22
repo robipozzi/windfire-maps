@@ -5,22 +5,32 @@
   become: yes
   vars:
     src_dir: "{{ playbook_dir }}"
-    nodejs_src_dir: "{{ lookup('env', 'PWD') }}/app"
+    nodejs_src_dir: "{{ local_home_dir }}/dev/windfire-maps/app"
     service_name: windfire-maps
     mode: u=rwx
   vars_files:
     - "{{ src_dir }}/conf/config.yml"
   tasks:
+    ###############################################################
+    ##### Windfire Maps service component deployment Section #####
+    ###############################################################
+    # Task 1: Stop Windfire Maps service on remote server
     - name: Stop Node.js application service {{ service_name }}
       shell: pm2 stop {{ service_name }}
       ignore_errors: yes
+    
+    # Task 2: Stop Windfire Security service on remote server
     - name: Delete Node.js application service {{ service_name }}
       shell: pm2 delete {{ service_name }}
       ignore_errors: yes
+
+    # Task 3: Delete Windfire Maps directory on remote server
     - name: Clean Node.js application folder {{ remote_nodejs_dest_dir }}
       file:
         path: "{{ remote_nodejs_dest_dir }}"
         state: absent
+    
+    # Task 4: Create Windfire Maps directory on remote server and copy files
     - name: Transfer Node.js Files
       copy:
         src: "{{ nodejs_src_dir }}"
@@ -28,11 +38,15 @@
         owner: "{{ user }}"
         group: "{{ group }}"
         mode: "{{ mode }}"
+    
+    # Task 5: Install Node.js dependencies and start the application service
     - name: install node dependencies
       shell: npm install
       become: true
       args:
         chdir: "{{ remote_nodejs_app_dir }}"
+
+    # Task 6: Start Node.js application service  
     - name: Start Node.js application service
       command: pm2 start app.js --name {{ service_name }}
       become: true

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ***** Undeploy script for Windfire Maps component *****
+# ***** Deploy script for Windfire Maps component *****
 
 source ../setenv.sh
 

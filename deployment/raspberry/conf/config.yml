@@ -1,7 +1,15 @@
 user: pi
 group: pi
 local_home_dir: /Users/robertopozzi
+local_ssl_dir: "{{ local_home_dir }}/opt/windfire/ssl"
+local_truststore_dir: "{{ local_ssl_dir }}/truststore"
+local_certs_dir: "{{ local_ssl_dir }}/certs/raspberry"
 remote_home_dir: /home/pi
-remote_homewindfiremaps_dir: "{{ remote_home_dir }}/windfire-maps"
-remote_nodejs_dest_dir: "{{ remote_homewindfiremaps_dir }}"
-remote_nodejs_app_dir: "{{ remote_nodejs_dest_dir }}/app"
+remote_windfire_maps_dir: "{{ remote_home_dir }}/windfire-maps"
+remote_nodejs_app_dir: "{{ remote_windfire_maps_dir }}/app"
+remote_ssl_dir: "{{ remote_home_dir }}/opt/windfire/ssl"
+remote_keystore_dir: "{{ remote_ssl_dir }}/keystore"
+remote_truststore_dir: "{{ remote_ssl_dir }}/truststore"
+windfire_ca_root_certificate: "WindfireRootCA.crt"
+windfire_server_certificate: "windfire-maps.crt"
+windfire_server_key: "windfire-maps.key"

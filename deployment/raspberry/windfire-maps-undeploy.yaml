@@ -5,7 +5,6 @@
   become: yes
   vars:
     src_dir: "{{ playbook_dir }}"
-    nodejs_src_dir: "{{ lookup('env', 'PWD') }}/app"
     service_name: windfire-maps
     mode: u=rwx
   vars_files:
@@ -25,7 +24,7 @@
       ignore_errors: yes
     
     # Task 3: Delete Windfire Maps directory on remote server
-    - name: Clean Node.js application folder {{ remote_nodejs_dest_dir }}
+    - name: Clean Node.js application folder {{ remote_windfire_maps_dir }}
       file:
-        path: "{{ remote_nodejs_dest_dir }}"
+        path: "{{ remote_windfire_maps_dir }}"
         state: absent

@@ -1,8 +1,7 @@
 #!/bin/bash
+source ../common.sh
 
 # ***** Run Test Client for Windfire Maps Service
-
-source ../setenv.sh
 
 # ===== DEFAULT VALUES =====
 LOG_LEVEL="INFO"

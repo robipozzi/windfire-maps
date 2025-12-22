@@ -1,4 +1,7 @@
-source ../../setenv.sh
+#!/bin/bash
+source ../../common.sh
+
+# ***** Generate Server Certificate for Windfire Maps Service *****
 
 # ===== VARIABLES =====
 COUNTRY="IT"

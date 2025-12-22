@@ -1,8 +1,7 @@
 #!/bin/bash
+source ../common.sh
 
 # ***** Undeploy script for Windfire Maps component *****
-
-source ../setenv.sh
 
 # ===== MAIN FUNCTION =====
 main() {

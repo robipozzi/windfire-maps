@@ -15,8 +15,8 @@ main() {
     # Parse arguments
     parseArgs $@
 
-    # Start undeployment
-    undeploy $@
+    # Start deployment
+    deploy $@
 }
 
 parseArgs()
@@ -26,7 +26,7 @@ parseArgs()
     echo -e "${BOLD}Selected platform: ${DEPLOY_PLATFORM}${RESET}"
 }
 
-undeploy()
+deploy()
 { 
     setFunction
     $DEPLOY_FUNCTION

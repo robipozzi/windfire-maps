@@ -14,13 +14,13 @@ coffee3="${coffee} ${coffee} ${coffee}"
 ##### TERMINAL COLORS - END
 
 ###### Variable section - START
-# ===== DEPLOYMENT / UNDEPLOYMENT =====
+# ===== DEPLOYMENT / UNDEPLOYMENT VARIABLES =====
 PLATFORM_OPTION=$1
 PLATFORM_SELECTED=false
 DEPLOY_PLATFORM=
 DEPLOY_FUNCTION=
 
-# ===== ROOT CA =====
+# ===== ROOT CA VARIABLES =====
 WINDFIRE_ROOT_CA_KEY="WindfireRootCA.key"
 WINDFIRE_ROOT_CA_CERTIFICATE="WindfireRootCA.crt"
 WINDFIRE_DEFAULT_KEYSTORE_DIR=$HOME/opt/windfire/ssl/keystore

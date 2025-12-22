@@ -55,7 +55,5 @@ undeployFromRaspberry()
     echo
 }
 
-
-
 # ===== EXECUTION =====
 main $@

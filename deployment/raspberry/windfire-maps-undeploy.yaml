@@ -11,12 +11,20 @@
   vars_files:
     - "{{ src_dir }}/conf/config.yml"
   tasks:
+    #################################################################
+    ##### Windfire Maps service component un-deployment Section #####
+    #################################################################
+    # Task 1: Stop Windfire Maps service on remote server
     - name: Stop Node.js application service {{ service_name }}
       shell: pm2 stop {{ service_name }}
       ignore_errors: yes
+    
+    # Task 2: Delete Windfire Maps service on remote server
     - name: Delete Node.js application service {{ service_name }}
       shell: pm2 delete {{ service_name }}
       ignore_errors: yes
+    
+    # Task 3: Delete Windfire Maps directory on remote server
     - name: Clean Node.js application folder {{ remote_nodejs_dest_dir }}
       file:
         path: "{{ remote_nodejs_dest_dir }}"

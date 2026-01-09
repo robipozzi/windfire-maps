@@ -65,7 +65,7 @@ class Server {
   createHTTPServer() {
     logger.info("Creating HTTP server");
     this.config.port = this.config.http_port;
-    this.config.protocol = "HTTP";
+    this.config.protocol = "http";
     return http.createServer(this.app);
   }
 
@@ -73,7 +73,7 @@ class Server {
     try {
       logger.info("Creating HTTPS server");
       this.config.port = this.config.https_port;
-      this.config.protocol = "HTTPS";
+      this.config.protocol = "https";
 
       const keyPath = path.resolve(this.config.ssl.keyPath);
       const certPath = path.resolve(this.config.ssl.certPath);
@@ -109,6 +109,7 @@ class Server {
     this.server.listen(this.config.port, () => {
       logger.info("Server running on port " + this.config.port);
       logger.info("Protocol: " + this.config.protocol);
+      logger.info("API endpoint: " + this.config.protocol + "://<server_url>:" + this.config.port + this.config.apiPrefix);
       //logger.info(`API endpoint: ${protocol}://localhost:${this.config.port}${this.config.apiPrefix}`);
     });
 

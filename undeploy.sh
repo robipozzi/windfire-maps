@@ -11,7 +11,7 @@ undeployFromRaspberry()
 	## Undeploy Windfire Maps component from remote Raspberry box
     echo ${cyn}Undeploy Windfire Maps component from Raspberry Pi ...${end}
     export ANSIBLE_CONFIG=$PWD/deployment/raspberry/ansible.cfg
-    ansible-playbook deployment/raspberry/windfire-maps-undeploy.yaml 
+    runWithAnsibleSshKey ansible-playbook deployment/raspberry/windfire-maps-undeploy.yaml 
     echo ${cyn}Done${end}
     echo
 }

@@ -25,6 +25,8 @@ The project provides procedures, based on Ansible, to deploy the application to 
 
 The **[deploy.sh](deploy.sh)** script manages the deployment procedures, delegating to specific Ansible playbooks for the different target platform.
 
+If `ansible_rsa` has a passphrase, every script here that runs Ansible loads it into a private `ssh-agent` through `runWithAnsibleSshKey` in [setenv.sh](setenv.sh). On macOS it uses Apple's `/usr/bin/ssh-add --apple-use-keychain`, so the passphrase is asked on the first run, saved in your login Keychain and read from there afterwards. Elsewhere it is asked on every run.
+
 The **[windfire-maps.yaml](deployment/raspberry/windfire-maps.yaml)** playbook is provided to do the following tasks on all Raspberry Pi boxes labeled as *maps_service* hosts:
 
     * Stop Node.js application service

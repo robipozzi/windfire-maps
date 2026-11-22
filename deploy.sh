@@ -11,7 +11,7 @@ deployToRaspberry()
 	## Deploy Windfire Maps component to remote Raspberry box
     echo ${cyn}Deploy Windfire Maps component to Raspberry Pi ...${end}
     export ANSIBLE_CONFIG=$PWD/deployment/raspberry/ansible.cfg
-    ansible-playbook deployment/raspberry/windfire-maps.yaml 
+    runWithAnsibleSshKey ansible-playbook deployment/raspberry/windfire-maps.yaml 
     echo ${cyn}Done${end}
     echo
 }
